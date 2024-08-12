@@ -18,7 +18,7 @@ interface DocumentResponse {
 function* fetchDocument() {
   try {
     const response: DocumentResponse = yield call(() =>
-      axios.get('http://localhost:1337/api/documents/1') 
+      axios.get('https://strapibackend1.onrender.com/api/documents/1') 
     );
     yield put(setContent(response.data.attributes.content));
     yield put(setTitle(response.data.attributes.title));
@@ -31,7 +31,7 @@ function* fetchDocument() {
 function* updateDocument(action: PayloadAction<{ content: string; title: string }>) {
   try {
     yield call(() =>
-      axios.put('http://localhost:1337/api/documents/1', {
+      axios.put('https://strapibackend1.onrender.com/api/documents/1', {
         data: {
           content: action.payload.content,
           title: action.payload.title,

@@ -9,7 +9,7 @@ import axios from 'axios';
 import { io } from 'socket.io-client';
 
 
-const socket = io('http://localhost:1337'); // Adjust based on your Strapi server URL
+const socket = io('https://strapibackend1.onrender.com');
 
 const App: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -20,7 +20,8 @@ const App: React.FC = () => {
   useEffect(() => {
     const fetchDocument = async () => {
       try {
-        const response = await axios.get('http://localhost:1337/api/documents/1');
+        const response = await axios.get('https://strapibackend1.onrender.com/api/documents/1');
+
         dispatch(setContent(response.data.data.attributes.content));
         dispatch(setTitle(response.data.data.attributes.title));
         setDocumentTitle(response.data.data.attributes.title);
